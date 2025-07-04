@@ -37,7 +37,7 @@ auto-tag:
 container-build:
   stage: build
   before_script:
-    - docker login -u ${DOCKER_USER} -p ${DOCKER_TOKEN}
+    - docker login -u ${CI_PROJECT_NAMESPACE} -p ${DOCKER_TOKEN}
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     - mkdir -p ~/.docker/cli-plugins
     - wget -O ~/.docker/cli-plugins/docker-pushrm https://github.com/christian-korneck/docker-pushrm/releases/latest/download/docker-pushrm_linux_amd64

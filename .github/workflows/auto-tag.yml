@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - VERSION
+  workflow_dispatch:
 
 jobs:
   create-tag:
@@ -29,7 +30,7 @@ jobs:
         id: check_tag
         run: |
           if git rev-parse "refs/tags/${VERSION}" >/dev/null 2>&1; then
-            echo "Tag ${VERSION} já existe."
+            echo "Tag ${VERSION} already exists."
             echo "tag_exists=true" >> $GITHUB_OUTPUT
           else
             echo "tag_exists=false" >> $GITHUB_OUTPUT

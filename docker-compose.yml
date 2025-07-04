@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  heartbeat-server:
+    image: luisnabais/heartbeat-server:latest
+    container_name: heartbeat-server
+    hostname: heartbeat-server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NTFY_TOPIC=${NTFY_TOPIC}
+      - NTFY_TOKEN=${NTFY_TOKEN}
+      - HEARTBEAT_TIMEOUT=${HEARTBEAT_TIMEOUT}

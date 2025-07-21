@@ -37,6 +37,11 @@ def status():
     }
     return jsonify(data)
 
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"}), 200
+
+
 def monitor():
     while True:
         now = time.time()
